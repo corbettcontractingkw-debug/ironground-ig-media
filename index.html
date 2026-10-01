@@ -79,6 +79,7 @@ function showSaves(post, btn) {
   btn.style.display = "none";
   const box = btn.closest(".post").querySelector(".saves");
   box.style.display = "flex";
+  btn.closest(".post").querySelector(".steps").innerHTML = "<li>Save each photo, in order.</li><li>Tap Copy caption.</li><li>Open Instagram, new post, pick the photos in the same order, paste, add your song and tags, share.</li>";
   box.innerHTML = post.media.map((m, i) => `<a href="posts/${post.slug}/${m.file}" download="${post.slug}-${m.file}">Save ${i + 1}</a>`).join("");
 }
 
