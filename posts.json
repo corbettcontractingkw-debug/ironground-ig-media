@@ -1,1 +1,31 @@
-[]
+[
+  {
+    "slug": "2026-10-01-boniface-avenue",
+    "name": "Boniface Avenue",
+    "made": "2026-10-01T16:41:16.395Z",
+    "shape": "1440x1920",
+    "media": [
+      {
+        "file": "01.jpg",
+        "type": "image"
+      },
+      {
+        "file": "02.jpg",
+        "type": "image"
+      },
+      {
+        "file": "03.jpg",
+        "type": "image"
+      },
+      {
+        "file": "04.jpg",
+        "type": "image"
+      },
+      {
+        "file": "05.jpg",
+        "type": "image"
+      }
+    ],
+    "caption": "Another project in the books 🫡\n\n📍 Location: Kitchener, Ontario\n\n🏗️ Project: Boniface Avenue\n\n👷 Scope of Work: Excavation, forming, wire mesh, concrete placement and broom finish\n\n📝 Project Description: A full side yard pour running along the house beside the back deck. We dug out the old grade, set the forms and laid wire mesh, then poured and broom finished for a clean, low maintenance surface that will hold up to Ontario winters."
+  }
+]
