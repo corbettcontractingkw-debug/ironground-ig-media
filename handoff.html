@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<title>Handoff</title>
+<style>body{margin:0;background:#021127;color:#c9d1dc;font:15px Inter,system-ui,sans-serif;display:grid;place-items:center;min-height:100vh}</style>
+</head>
+<body>
+<p id="s">Sending photos to Instagram</p>
+<script>
+// Opened from the Instagram tab. Fetches one post's files from this site and hands them
+// back to the Instagram tab with postMessage, then closes itself.
+(async () => {
+  const slug = new URLSearchParams(location.search).get("post");
+  const s = document.getElementById("s");
+  try {
+    const list = await (await fetch("posts.json?" + Date.now())).json();
+    const post = list.find((p) => p.slug === slug);
+    if (!post) throw new Error("no post " + slug);
+    const files = [];
+    for (const m of post.media) {
+      const blob = await (await fetch(`posts/${slug}/${m.file}`)).blob();
+      files.push(new File([blob], `${slug}-${m.file}`, { type: m.type === "video" ? "video/mp4" : "image/jpeg" }));
+    }
+    window.opener.postMessage({ igHandoff: true, slug, files, caption: post.caption }, "https://www.instagram.com");
+    s.textContent = "Sent " + files.length + " files";
+    setTimeout(() => window.close(), 800);
+  } catch (e) {
+    s.textContent = "Failed: " + e.message;
+    window.opener && window.opener.postMessage({ igHandoff: true, error: e.message }, "https://www.instagram.com");
+  }
+})();
+</script>
+</body>
+</html>
